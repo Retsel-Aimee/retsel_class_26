@@ -1,0 +1,15 @@
+---
+title: "Retsel Aimée González-Valentín"
+subtittle: "Git-Intro-Webpage"
+author: "MSc Ecology & Wildlife Conservation student"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+<img src="NYCpicture.JPG" width="335" height="452"/>
+
+# R Tutorials
+- [Assignment 1](Tareas-RStudio-Class/Untitled.html)
+
