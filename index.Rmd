@@ -10,6 +10,8 @@ output:
 ---
 <img src="NYCpicture.JPG" width="335" height="452"/>
 
+Algo sobre mi
+
 # R Tutorials
 - [Assignment 1](homework/Untitled.html)
 
