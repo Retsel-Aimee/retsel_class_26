@@ -11,5 +11,5 @@ output:
 <img src="NYCpicture.JPG" width="335" height="452"/>
 
 # R Tutorials
-- [Assignment 1](Tareas-RStudio-Class/Untitled.html)
+- [Assignment 1](homework/Untitled.html)
 

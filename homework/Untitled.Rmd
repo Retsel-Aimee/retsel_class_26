@@ -1,0 +1,102 @@
+---
+title: "Assigment 1 RStudio Intro Class"
+author: "Retsel Aimée González-Valentín"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+---
+
+```{r setup, include=FALSE}
+# Global chunk options. `include=FALSE` hides this setup chunk from the output.
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q1. Assigning values
+
+Create an object called `height` with the value 175 and print it.
+
+```{r q1}
+height <- 175
+height          # print the object
+```
+
+## Q2. Simple math
+
+Calculate the result of `25 * 4 - 10`.
+
+```{r q2}
+25 * 4 - 10     # multiplication happens before subtraction
+```
+
+## Q3. Using functions
+
+Use the function `sqrt()` to calculate the square root of 81.
+
+```{r q3}
+sqrt(81)
+```
+
+## Q4. Character objects
+
+Assign the phrase "R is fun!" to an object called `message` and print it.
+
+```{r q4}
+message <- "R is fun!"
+message         # print the object
+```
+
+## Q5. Object manipulation
+
+Create two objects `a <- 10` and `b <- 5`, then calculate their sum and store it in `c`.
+
+```{r q5}
+a <- 10
+b <- 5
+c <- a + b
+c               # print the sum
+```
+
+## Q6. Logical comparison
+
+Test whether 15 is greater than 20.
+
+```{r q6}
+15 > 20         # returns FALSE, because 15 is NOT greater than 20
+```
+
+## Q7. Checking classes
+
+Check the class of the object `"Hello World"`.
+
+```{r q7}
+class("Hello World")   # returns "character"
+```
+
+## Q8. Code chunk options — suppress warnings
+
+```{r q8, warning=FALSE}
+log(-1)
+```
+
+
+## Q9. Code chunk options — suppress messages
+
+
+```{r q9, message=FALSE}
+# Load a package (may produce messages)
+library(dplyr)
+```
+
+
+## Q10. Creating and analyzing a vector
+
+Create a numeric vector called `grades`, calculate the average with
+`mean()`, store it in `average`, and print the result.
+
+```{r q10}
+grades <- c(80, 90, 75, 95, 85)
+average <- mean(grades)
+average         # print the average (85)
+```
+
+
