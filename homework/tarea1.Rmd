@@ -1,5 +1,5 @@
 ---
-title: "Assigment 1 RStudio Intro Class"
+title: "Assigment 1 R-Studio Intro Class"
 author: "Retsel Aimée González-Valentín"
 date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
 output: html_document

@@ -1,0 +1,89 @@
+---
+title: "Assigment 2 R-Studio Intro Class"
+author: "Retsel Aimée González-Valentín"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+### Calling Packages Sets:
+```{r messsagesf}
+library (dplyr)
+library (gapminder)
+```
+
+data(gapminder)
+head(gapminder)
+
+**Q1. Class of the dataset**
+```{r}
+# class() tells you what kind of object it is
+class(gapminder)
+```
+
+
+**Q2. Life expectancy smaller than 29**
+```{r}
+# filter() keeps only the rows that meet the condition
+low_lifeExp <- gapminder %>% filter(lifeExp < 29)
+head(low_lifeExp, 6)
+```
+
+
+**Q3. Rwanda, years after 1979**
+```{r}
+# Two conditions separated by a comma: both must be true
+rwanda <- gapminder %>% filter(country == "Rwanda", year > 1979)
+head(rwanda, 6)
+```
+
+**Q4. Drop gdpPercap**
+```{r}
+# The minus sign inside select() removes a column
+gapminder_no_gdp <- gapminder %>% select(-gdpPercap)
+head(gapminder_no_gdp, 6)
+```
+
+**Q5. Ascending lifeExp**
+```{r}
+# arrange() sorts from smallest to largest by default
+gap_asc <- gapminder %>% arrange(lifeExp)
+head(gap_asc, 6)
+```
+
+**Q6. Descending lifeExp**
+```{r}
+# desc() reverses the order: largest to smallest
+gap_desc <- gapminder %>% arrange(desc(lifeExp))
+head(gap_desc, 6)
+```
+
+**Q7. Only year and lifeExp**
+```{r}
+# select() keeps only the columns you name
+year_lifeExp <- gapminder %>% select(year, lifeExp)
+head(year_lifeExp, 6)
+```
+
+**Q8. Cambodia, year and lifeExp**
+```{r}
+# Chain filter() and select() with the pipe
+cambodia <- gapminder %>%
+  filter(country == "Cambodia") %>%
+  select(year, lifeExp)
+head(cambodia, 6)
+```
+
+**Q9. Only African countries**
+```{r}
+# Filter using the continent column
+africa <- gapminder %>% filter(continent == "Africa")
+head(africa, 6)
+```
+
+**Q10. Life expectancy in months**
+```{r}
+# mutate() creates a new column; multiply years by 12
+gap_months <- gapminder %>% mutate (lifeExp_months = lifeExp * 12)
+head(gap_months, 6)
+```
+
+
