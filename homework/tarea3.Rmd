@@ -1,0 +1,78 @@
+---
+title: "Assigment 3 R-Studio Intro Class"
+author: "Retsel Aimée González-Valentín"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+```{r}
+library(ggplot2)
+data("trees")
+head(trees)
+```
+```{r}
+head(trees,6)
+shapiro.test(trees$Volume)
+```
+
+# Q1. Create a histogram showing the distribution of Girth.
+```{r}
+head(trees[, "Girth", drop = FALSE], 6)
+
+ggplot(trees, aes(x = Girth)) +
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "black") +
+  labs(title = "Distribution of Tree Girth",
+       x = "Girth (inches)",
+       y = "Frequency") +
+  theme_minimal()
+```
+
+# Q2. Create a histogram showing the distribution of Volume.
+```{r}
+head(trees[, "Volume", drop = FALSE], 6)
+
+ggplot(trees, aes(x = Volume)) +
+  geom_histogram(binwidth = 5, fill = "darkgreen", color = "black") +
+  labs(title = "Distribution of Tree Volume",
+       x = "Volume (cubic feet)",
+       y = "Frequency") +
+  theme_minimal()
+```
+
+# Q3. Create a scatterplot showing the relationship between Girth and Volume.
+```{r}
+head(trees[, c("Girth", "Volume")], 6)
+
+ggplot(trees, aes(x = Girth, y = Volume)) +
+  geom_point(size = 2, color = "darkred") +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +  # linear trend line
+  labs(title = "Relationship between Girth and Volume",
+       x = "Girth (inches)",
+       y = "Volume (cubic feet)") +
+  theme_minimal()
+```
+The relationship for this plot is very strong; the greater value is seen where trees have a larger girth.
+
+# Q4. Use the Shapiro–Wilk test to assess whether Volume is normally distributed. Report the p-value and state whether the data are normally distributed.
+```{r}
+shapiro_volume <- shapiro.test(trees$Volume)
+shapiro_volume
+
+# Extract the p-value
+shapiro_volume$p.value
+```
+
+```{r}
+##  Shapiro-Wilk normality test
+## data:  trees$Volume
+## W = 0.88757, p-value = 0.003579
+```
+It's less than 0.05, so the p-value is about 0.0036. That's why we don't accept the null hypothesis of normality: Volume is not spread out properly. See how this lines up with the right shift in the Q2 histogram?
+
+# Q5. Repeat the Shapiro–Wilk test for Girth. Report the p-value and state whether Girth is normally distributed.
+```{r}
+shapiro_girth <- shapiro.test(trees$Girth)
+shapiro_girth
+
+shapiro_girth$p.value
+```
+The p-value is higher than 0.05, at roughly 0.089. Since there is no substantial evidence that Girth deviates from normalcy and may be regarded as roughly normally distributed, we are unable to reject the null hypothesis.

@@ -34,3 +34,4 @@ When I’m not in the lab or in the field, I manage domestic animal care service
 # R Tutorials
 - [Assignment 1](homework/tarea1.html)
 - [Assignment 2](homework/tarea2.html)
+- [Assignment 3](homework/tarea3.html)
