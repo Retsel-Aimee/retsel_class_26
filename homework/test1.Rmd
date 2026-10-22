@@ -4,3 +4,71 @@ author: "Retsel Aimée González-Valentín"
 date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
 output: html_document
 ---
+
+``` {r, message=F, warning=F}
+library(tidyverse)
+library(dplyr)
+library(aod)
+```
+
+
+```{r}
+msleep <- glimpse(msleep)
+storms <- storms
+lizards <- lizards
+```
+
+# MAMMALS SLEEP DATA SET
+```{r}
+data("msleep")
+head(msleep)
+```
+### Q1: Use filter() to subset msleep to only animals who are awake for at least 12 hours of the day.
+```{r}
+filter(msleep, awake > 12)
+```
+
+# STORM TRACKS DATA
+```{r}
+data("storms")
+head(storms)
+```
+### Q3:Use group_by() and summarise() to calculate the number of storms per year.
+```{r}
+storms_per_year <- storms %>% 
+  group_by(year) %>% 
+  summarise(num_storms = n())
+storms_per_year
+```
+
+### Q4:Use filter() to subset storms to only storms with wind speeds greater than 50 knots, then use arrange() to sort by wind descending.
+
+```{r}
+filter(storms, wind > 50)
+arrange(storms, desc(wind>50))
+```
+# A COMPARISON OF SITE PREFRENCES OF TWO SPECIES OF LIZARDS
+```{r}
+library(ggplot2)
+data("lizards")
+head(lizards)
+```
+### Q5: Determine which Site and Diameter combination has the highest total grahami.
+```{r} 
+lizards_grahami <- lizards %>% 
+  group_by(Site, Diameter) %>% 
+  summarise(total_grahami = sum(grahami, na.rm = TRUE)) %>% 
+  arrange(desc(total_grahami))
+lizards_grahami
+```
+### Q6: Create a boxplot showing the distribution of _Opalinus_ counts under different light conditions (Sun vs. Shade) using ggplot2.
+
+```{r}
+library(ggplot2)
+ggplot(lizards, aes(x = Site, y = opalinus, fill = Site)) + 
+  geom_boxplot() +
+  labs(title = "Distribution of Opalinus Counts by Site Conditions",
+       x = "Site / Light Condition",
+       y = "Opalinus Count") +
+  theme_minimal()
+```
