@@ -30,11 +30,8 @@ When I’m not in the lab or in the field, I manage domestic animal care service
 - **Herpetology & Morphology:** Worked on dissections and morphological studies of invasive snakes (*BOA Constrictor & Pythons Morphology*) and native fossorial reptiles (*Amphisbaena* & *Typhlops*)
 - **Guánica Dry Forest Restoration:** Participated in field efforts supporting reproduction habitats for the endangered *Sapo Concho* (*Peltophryne lemur*) at Ballena Beach.
 
----
-
 # R Tutorials
 - [Assignment 1](homework/tarea1.html)
 - [Assignment 2](homework/tarea2.html)
 - [Assignment 3](homework/tarea3.html)
 - [ Test 1 ](homework/test1.html)
-
