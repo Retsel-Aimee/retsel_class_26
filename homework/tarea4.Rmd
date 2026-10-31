@@ -1,0 +1,59 @@
+---
+title: "Assigment 4 R-Studio Intro Class"
+author: "Retsel A. González Valentín"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(BSDA)
+read_excel("~/Downloads/butterflies_pesticides.xlsx")
+butterflies_pesticide <-read_excel("~/Downloads/butterflies_pesticides.xlsx")
+bp <- butterflies_pesticide
+head(bp)
+getwd()
+system("git rev-parse --show-toplevel")
+file.exists(".git")
+list.files("butterflies_pesticides.xlsx", all.files = TRUE)
+```
+## Q1. Normality test 
+
+```{r}
+#Independent t-test
+shapiro.test(bp$`Wing Length`)
+```
+
+## Q2. Equality of variances test
+
+```{r}
+head(bp)
+var.test(`Wing Length`~ Group, data=bp)
+```
+## Q3. Statistical test
+
+```{r}
+#Welch's t-test
+t.test(`Wing Length`~ Group, data=bp,
+            alternative=c("two.sided"),
+            var.equal=FALSE,
+            )
+```
+
+## Q4. ggplot 
+
+```{r}
+library(ggplot2)
+
+ggplot(bp, aes(x=Group, y=`Wing Length`))+
+  geom_boxplot()
+```
+
+## Q5. Summary  
+
+```{r}
+#I tested the effect of pesticide exposure on wing length in butterflies by comparing a group of pesticide-treated butterflies with an untreated control group (n = 80). Both groups were not departing from normality (Shapiro-Wilk, p > 0.05) but their variance was not equal (F-test p = 0.0055; Levine’s p = 0.0027) therefore I performed a Welch’s t-test. Wing length was significantly different among groups (t = 3.98, df = 66.03, p = 0.00017), with control butterflies having longer wings (632.18 ± 32.91 SD) than pesticide treated butterflies (593.49 ± 51.86 SD). This is a difference of ~ 38.7 units (95% CI: ~ 19 to 58) or a ~ 6% decrease in wing length. The effect size was considerable (Cohen's d = 0.89), indicating not only a statistically significant difference, but also one that is probably biologically important. Given the close relationship between wing size and flight ability, a loss of this magnitude could influence dispersal, feeding and mate-finding, suggesting that exposure to pesticides may have implications for the fitness of these butterfly populations in their environments.
+```
+
